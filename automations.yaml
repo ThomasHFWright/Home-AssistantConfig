@@ -1,0 +1,37 @@
+[]
+# - id: hvac_power_test_living_room
+#   alias: "Power test Living Room"
+#   trigger:
+#     platform: mqtt
+#     topic: MHI-AC-Ctrl/Living-Room/hvac_mode
+#   action:
+#     service: mqtt.publish
+#     data_template:
+#       topic: MHI-AC-Ctrl/Living-Room/set/Power
+#       payload: >
+#         {% set values = { "off":"Off" } %}
+#         {{ values[trigger.payload] if trigger.payload in values.keys() else "On"}}
+# - id: hvac_mode_controller_living_room
+#   alias: "hvac_mode controller Living Room"
+#   trigger:
+#     platform: mqtt
+#     topic: MHI-AC-Ctrl/Living-Room/hvac_mode
+#   action:
+#     service: mqtt.publish
+#     data_template:
+#       topic: MHI-AC-Ctrl/Living-Room/set/Mode
+#       payload: >
+#         {% set values = { "auto":"Auto", "heat":"Heat", "cool":"Cool", "fan_only":"Fan", "dry":"Dry"} %}
+#         {{ values[trigger.payload] if trigger.payload in values.keys()}}
+# - id: hvac_power_controller_living_room
+#   alias: "hvac_power controller Living Room"
+#   trigger:
+#     platform: mqtt
+#     topic: MHI-AC-Ctrl/Living-Room/hvac_power
+#   action:
+#     service: mqtt.publish
+#     data_template:
+#       topic: MHI-AC-Ctrl/Living-Room/set/Power
+#       payload: >
+#         {% set values = { "OFF":"Off", "ON":"On"} %}
+#         {{ values[trigger.payload] if trigger.payload in values.keys()}}

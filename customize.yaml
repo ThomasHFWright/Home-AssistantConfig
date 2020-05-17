@@ -1,0 +1,3 @@
+climate.bedroom: {}
+climate.spare_room:
+  friendly_name: Guest Bedroom

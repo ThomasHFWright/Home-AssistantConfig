@@ -1,0 +1,47 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+climate:
+  - platform: heatmiserneo
+    host: 192.168.1.116
+    port: 4242
+  - platform: mqtt
+    name: "Living Room Aircon"
+    mode_command_topic: "MHI-AC-Ctrl/Living-Room/set/Mode"
+    mode_state_topic: "MHI-AC-Ctrl/Living-Room/Mode"
+    #power_command_topic: "MHI-AC-Ctrl/Living-Room/set/Power"
+    #power_state_topic: "MHI-AC-Ctrl/Living-Room/Power"
+    temperature_command_topic: "MHI-AC-Ctrl/Living-Room/set/Tsetpoint"
+    temperature_state_topic: "MHI-AC-Ctrl/Living-Room/Tsetpoint"
+    current_temperature_topic: "MHI-AC-Ctrl/Living-Room/Troom"
+    fan_mode_command_topic: "MHI-AC-Ctrl/Living-Room/set/Fan"
+    fan_mode_state_topic: "MHI-AC-Ctrl/Living-Room/Fan"
+    #fan_speed_topic: "MHI-AC-Ctrl/Living-Room/OpData/IU-FANSPEED"
+    swing_mode_command_topic: "MHI-AC-Ctrl/Living-Room/set/Vanes"
+    swing_mode_state_topic: "MHI-AC-Ctrl/Living-Room/Vanes"
+
+homeassistant:
+  customize: !include customize.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+  javascript_version: latest
+  
+media_player:
+  - platform: samsungtv_tizen
+    host: 192.168.1.121
+    port: 8002
+    mac: 7C:74:56:73:76:3C

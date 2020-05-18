@@ -1,0 +1,8 @@
+{
+    "python.analysis.disabled": [
+        "import-error"
+    ],
+    "python.linting.pylintArgs": [
+        "--disable=import-error,wrong-import-order,unused-import,ungrouped-imports"
+    ],
+}

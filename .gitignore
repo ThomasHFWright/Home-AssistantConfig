@@ -1,6 +1,6 @@
 # Example .gitignore file for your config dir.
 # An * ensures that everything will be ignored.
-*
+#*
 
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
@@ -11,8 +11,15 @@
 .storage
 .cloud
 .google.token
+tts
+__pycache__
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+*/samsungtv_tizen/token-*.txt
+
+#Ignore logs and databases
+*.log
+*.db

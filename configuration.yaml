@@ -45,3 +45,8 @@ media_player:
     host: 192.168.1.121
     port: 8002
     mac: 7C:74:56:73:76:3C
+    
+logger:
+  default: warning
+  logs:
+    custom_components.heatmiserneo: debug
